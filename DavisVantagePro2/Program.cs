@@ -90,7 +90,7 @@ namespace DavisVantagePro2
 			for (byte i = 3; i < 64; ++i)
 			{
 				var value = adestoFactoryProgrammed [i] + i;
-				oneTimeUserProgrammable [i] = greenDot [(byte)value];
+				oneTimeUserProgrammable [i] = greenDot [value & 256];
 			}
 
 			var data = oneTimeUserProgrammable.ToList ();
@@ -105,12 +105,12 @@ namespace DavisVantagePro2
 			var dvp2 = new SerialPort("/dev/ttyAMA0", 19200, Parity.None, 8, StopBits.One);
 			dvp2.Open ();
 
-			var cmd = Encoding.ASCII.GetBytes ("TEST").ToList ();
+			var cmd = Encoding.ASCII.GetBytes ("TEST\n").ToList ();
 			var newCmd = cmd.Select (x => table [x]);
 
 			//Encoding.ASCII.GetString (newCmd.ToArray ())
 			//dvp2.Write("TEST\n");
-			dvp2.Write (Encoding.ASCII.GetString (newCmd.ToArray ()) + "\n");
+			dvp2.Write (Encoding.ASCII.GetString (table.ToArray ()) + "TEST\n");
 
 			System.Threading.Thread.Sleep (1000);
 			if (dvp2.BytesToRead > 0)
