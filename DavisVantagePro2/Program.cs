@@ -38,6 +38,7 @@ namespace DavisVantagePro2
 			//Encoding.ASCII.GetString (newCmd.ToArray ())
 			dvp2.Write("TEST\n");
 
+			System.Threading.Thread.Sleep (1000);
 			if (dvp2.BytesToRead > 0)
 				Console.WriteLine (dvp2.ReadExisting ());
 
