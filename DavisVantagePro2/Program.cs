@@ -35,7 +35,8 @@ namespace DavisVantagePro2
 			var cmd = Encoding.ASCII.GetBytes ("TEST\n").ToList ();
 			var newCmd = cmd.Select (x => table [x]);
 
-			dvp2.Write(Encoding.ASCII.GetString (newCmd.ToArray ()));
+			//Encoding.ASCII.GetString (newCmd.ToArray ())
+			dvp2.Write("TEST\n");
 
 			if (dvp2.BytesToRead > 0)
 				Console.WriteLine (dvp2.ReadExisting ());
