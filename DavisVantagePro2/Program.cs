@@ -90,7 +90,7 @@ namespace DavisVantagePro2
 			for (byte i = 3; i < 64; ++i)
 			{
 				var value = adestoFactoryProgrammed [i] + i;
-				oneTimeUserProgrammable [i] = greenDot [value];
+				oneTimeUserProgrammable [i] = greenDot [(byte)value];
 			}
 
 			var data = oneTimeUserProgrammable.ToList ();
